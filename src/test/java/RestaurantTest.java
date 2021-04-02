@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -58,4 +59,14 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void calculating_order_value() throws  itemNotFoundException{
+        Restaurant restaurant = initializeRestaurant();
+        String dish = "Some dish";
+        int price = 120;
+        restaurant.addToMenu(dish, price);
+        ArrayList<String> items = new ArrayList<String>();
+        items.add(dish);
+        assertEquals(price, restaurant.getTotalPrice(items));
+    }
 }
