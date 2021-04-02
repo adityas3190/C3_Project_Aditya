@@ -67,6 +67,10 @@ public class Restaurant {
 
     public int getTotalPrice(ArrayList<String> items) throws itemNotFoundException {
         int total = 0;
+        for(String item: items) {
+            Item currentItem = findItemByName(item);
+            total += currentItem.getPrice();
+        }
         return total;
     }
 
